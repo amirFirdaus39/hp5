@@ -20,9 +20,9 @@ col = {"NAME": list_name,
 
 df = pd.DataFrame(col)
 
-fix = pd.read_excel("D:/hp5.xlsx",sheet_name='Fix')
-rent = pd.read_excel("D:/hp5.xlsx",sheet_name='Rent')
-flow = pd.read_excel("D:/hp5.xlsx",sheet_name='Flow')
+fix = pd.read_excel("data/hp5.xlsx",sheet_name='Fix')
+rent = pd.read_excel("data/hp5.xlsx",sheet_name='Rent')
+flow = pd.read_excel("data/hp5.xlsx",sheet_name='Flow')
 
 lastmonth = datetime.now() - dateutil.relativedelta.relativedelta(months=1)
 lastmonth = int(lastmonth.strftime("%Y%m"))
