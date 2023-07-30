@@ -193,4 +193,4 @@ def calculate(lastmonth,fix,rent,flow):
 if len(fix.loc[fix['YM'] == currentmonth]) != 0:
        calculate(currentmonth,fix,rent,flow)
 
-calculate(lastmonth,fix,rent,flow)
+calculate(currentmonth,fix,rent,flow)
