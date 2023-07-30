@@ -94,8 +94,8 @@ def calculate(lastmonth,fix,rent,flow,key):
                                            "TOTAL": "{:.2f}"
                                            }))
             	type = ['API','AIR','WIFI','OTHERS','RENT','REFUND']
-            with tabB:
-                st.write(flow)
+           with tabB:
+              st.write(flow)
 
        with col2:
            st.subheader("Individual Payments")
