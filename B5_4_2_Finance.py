@@ -83,15 +83,19 @@ def calculate(lastmonth,fix,rent,flow,key):
            st.write(f"Water: RM{air[0]}")
            st.write(f"Wifi: RM{wifi[0]}")
            st.write(f"Rent: RM1800")
-           st.table(df.style.format({"API": "{:.2f}",
-                                       "AIR": "{:.2f}",
-                                       "WIFI": "{:.2f}",
-                                       "OTHERS": "{:.2f}",
-                                       "RENT": "{:.2f}",
-                                       "REFUND": "{:.2f}",
-                                       "TOTAL": "{:.2f}"
-                                       }))
-           type = ['API','AIR','WIFI','OTHERS','RENT','REFUND']
+           tabA, tabB = st.tabs(['Overall','Others'])
+           with tabA:
+               st.table(df.style.format({"API": "{:.2f}",
+                                           "AIR": "{:.2f}",
+                                           "WIFI": "{:.2f}",
+                                           "OTHERS": "{:.2f}",
+                                           "RENT": "{:.2f}",
+                                           "REFUND": "{:.2f}",
+                                           "TOTAL": "{:.2f}"
+                                           }))
+               type = ['API','AIR','WIFI','OTHERS','RENT','REFUND']
+            with tabB:
+                st.write(flow)
            # options = st.multiselect(
            #     'Choose Unpaid Payments:',
            #     type, default=type)
