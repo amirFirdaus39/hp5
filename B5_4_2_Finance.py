@@ -31,7 +31,7 @@ currentmonth = int(currentmonth.strftime("%Y%m"))
 
 if len(fix.loc[fix['YM'] == currentmonth]) != 0:
        pass
-def calculate(lastmonth): 
+def calculate(lastmonth,fix,rent,flow): 
        df = pd.DataFrame(col)
        name = ['Ziad','Amir','Lutfi','Adnan','Kimi']
        n = len(name)
@@ -190,4 +190,4 @@ def calculate(lastmonth):
                st.subheader(f"RM{round(km.values[0],2)}")
        
        st.write("---")
-calculate(lastmonth)
+calculate(lastmonth,fix,rent,flow)
