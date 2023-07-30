@@ -29,12 +29,12 @@ lastmonth = int(lastmonth.strftime("%Y%m"))
 currentmonth = datetime.now() 
 currentmonth = int(currentmonth.strftime("%Y%m"))
 
-name = ['Ziad','Amir','Lutfi','Adnan','Kimi']
-n = len(name)
-
 if len(fix.loc[fix['YM'] == currentmonth]) != 0:
        pass
 def calculate(lastmonth): 
+       df = pd.DataFrame(col)
+       name = ['Ziad','Amir','Lutfi','Adnan','Kimi']
+       n = len(name)
        api = fix.loc[fix['YM'] == lastmonth,'API'].reset_index(drop=True)
        air = fix.loc[fix['YM'] == lastmonth,'AIR'].reset_index(drop=True)
        wifi = fix.loc[fix['YM'] == lastmonth,'WIFI'].reset_index(drop=True)
