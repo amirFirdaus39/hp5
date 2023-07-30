@@ -7,7 +7,7 @@ import openpyxl
 import streamlit as st
 st.set_page_config(
     page_title="Pay Up",
-    page_icon=":money_with_wings:",
+    #page_icon=":money_with_wings:",
     layout="wide",
 )
 #streamlit run "d:/pyfile/financehp5/B5_4_2 Finance.py"
