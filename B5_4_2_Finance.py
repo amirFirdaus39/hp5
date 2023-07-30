@@ -7,6 +7,7 @@ import openpyxl
 import streamlit as st
 
 #streamlit run "d:/pyfile/financehp5/B5_4_2 Finance.py"
+st.title("B5-4-2 Last Month Payment")
 
 list_name = ['Ziad','Amir','Lutfi','Adnan','Kimi']
 empty = [0,0,0,0,0]
@@ -29,11 +30,14 @@ lastmonth = int(lastmonth.strftime("%Y%m"))
 currentmonth = datetime.now() 
 currentmonth = int(currentmonth.strftime("%Y%m"))
 
+currentkey = [1,2,3,4,5,6]
+lastkey = [7,8,9,10,11,12]
 
-def calculate(lastmonth,fix,rent,flow): 
+def calculate(lastmonth,fix,rent,flow,key): 
        df = pd.DataFrame(col)
        name = ['Ziad','Amir','Lutfi','Adnan','Kimi']
        n = len(name)
+       
        api = fix.loc[fix['YM'] == lastmonth,'API'].reset_index(drop=True)
        air = fix.loc[fix['YM'] == lastmonth,'AIR'].reset_index(drop=True)
        wifi = fix.loc[fix['YM'] == lastmonth,'WIFI'].reset_index(drop=True)
@@ -70,7 +74,6 @@ def calculate(lastmonth,fix,rent,flow):
        df['REFUND'] = df['REFUND'].apply(lambda x : round(x,2))
        df['TOTAL'] = df['TOTAL'].apply(lambda x : round(x,2))
        
-       st.title("B5-4-2 Last Month Payment")
        st.header(f"📝 {str(lastmonth)[:4]}-{str(lastmonth)[4:]}")
        st.write("---") 
        col1, col2 = st.columns(2)
@@ -95,12 +98,12 @@ def calculate(lastmonth,fix,rent,flow):
        with col2:
            st.subheader("Individual Payments")
            tab1, tab2, tab3, tab4, tab5 = st.tabs(list_name)
-       
+              
            #ziad
            with tab1:
                options = st.multiselect(
                'Choose Unpaid Payments:',
-               type, default=type,key=1)
+               type, default=type,key=key[0])
                z_df = df.loc[df['NAME'] == 'Ziad', options]
                z = z_df.sum(axis=1)
                z_df['TOTAL'] = round(z,2)
@@ -118,7 +121,7 @@ def calculate(lastmonth,fix,rent,flow):
            with tab2:
                options = st.multiselect(
                'Choose Unpaid Payments:',
-               type, default=type,key=2)
+               type, default=type,key=key[1])
                am_df = df.loc[df['NAME'] == 'Amir', options]
                am = am_df.sum(axis=1)
                am_df['TOTAL'] = round(am,2)
@@ -137,7 +140,7 @@ def calculate(lastmonth,fix,rent,flow):
            with tab3:
                options = st.multiselect(
                'Choose Unpaid Payments:',
-               type, default=type,key=3)
+               type, default=type,key=key[2])
                lf_df = df.loc[df['NAME'] == 'Lutfi', options]
                lf = lf_df.sum(axis=1)
                lf_df['TOTAL'] = round(lf,2)
@@ -155,7 +158,7 @@ def calculate(lastmonth,fix,rent,flow):
            with tab4:
                options = st.multiselect(
                'Choose Unpaid Payments:',
-               type, default=type,key=4)
+               type, default=type,key=key[3])
                ad_df = df.loc[df['NAME'] == 'Adnan', options]
                ad = ad_df.sum(axis=1)
                ad_df['TOTAL'] = round(ad,2)
@@ -173,7 +176,7 @@ def calculate(lastmonth,fix,rent,flow):
            with tab5:
                options = st.multiselect(
                'Choose Unpaid Payments:',
-               type, default=type,key=5)
+               type, default=type,key=key[4])
                km_df = df.loc[df['NAME'] == 'Kimi', options]
                km = km_df.sum(axis=1)
                km_df['TOTAL'] = round(km,2)
@@ -193,4 +196,4 @@ def calculate(lastmonth,fix,rent,flow):
 if len(fix.loc[fix['YM'] == currentmonth]) != 0:
        calculate(currentmonth,fix,rent,flow)
 
-calculate(currentmonth,fix,rent,flow)
+calculate(lastmonth,fix,rent,flow)
