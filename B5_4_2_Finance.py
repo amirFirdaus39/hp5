@@ -14,7 +14,7 @@ st.set_page_config(
 st.title("B5-4-2 Last Month Payment")
 
 list_name = ['Ziad','Amir','Lutfi','Adnan','Kimi','Nas']
-empty = [0,0,0,0,0]
+empty = [0,0,0,0,0,0]
 col = {"NAME": list_name,
        "API":empty,
        "AIR":empty,
