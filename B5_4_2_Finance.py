@@ -13,7 +13,7 @@ st.set_page_config(
 #streamlit run "d:/pyfile/financehp5/B5_4_2 Finance.py"
 st.title("B5-4-2 Last Month Payment")
 
-list_name = ['Ziad','Amir','Lutfi','Adnan','Kimi']
+list_name = ['Ziad','Amir','Lutfi','Adnan','Kimi','Nas']
 empty = [0,0,0,0,0]
 col = {"NAME": list_name,
        "API":empty,
@@ -39,7 +39,7 @@ lastkey = [7,8,9,10,11,12]
 
 def calculate(lastmonth,fix,rent,flow,key): 
        df = pd.DataFrame(col)
-       name = ['Ziad','Amir','Lutfi','Adnan','Kimi']
+       name = ['Ziad','Amir','Lutfi','Adnan','Kimi','Nas']
        n = len(name)
        
        api = fix.loc[fix['YM'] == lastmonth,'API'].reset_index(drop=True)
@@ -103,7 +103,7 @@ def calculate(lastmonth,fix,rent,flow,key):
 
        with col2:
            st.subheader("Individual Payments")
-           tab1, tab2, tab3, tab4, tab5 = st.tabs(list_name)
+           tab1, tab2, tab3, tab4, tab5,tab6 = st.tabs(list_name)
               
            #ziad
            with tab1:
@@ -195,6 +195,24 @@ def calculate(lastmonth,fix,rent,flow,key):
                                            "TOTAL": "{:.2f}"
                                            }))
                st.write("Kimi has to pay a total amount of:")
+               st.subheader(f"RM{round(km.values[0],2)}")
+                       #kimi
+           with tab6:
+               options = st.multiselect(
+               'Choose Unpaid Payments:',
+               type, default=type,key=key[5])
+               km_df = df.loc[df['NAME'] == 'Nas', options]
+               km = km_df.sum(axis=1)
+               km_df['TOTAL'] = round(km,2)
+               st.table(km_df.style.format({"API": "{:.2f}",
+                                           "AIR": "{:.2f}",
+                                           "WIFI": "{:.2f}",
+                                           "OTHERS": "{:.2f}",
+                                           "RENT": "{:.2f}",
+                                           "REFUND": "{:.2f}",
+                                           "TOTAL": "{:.2f}"
+                                           }))
+               st.write("Nas has to pay a total amount of:")
                st.subheader(f"RM{round(km.values[0],2)}")
        
        st.write("---")
