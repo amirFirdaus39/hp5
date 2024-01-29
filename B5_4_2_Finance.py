@@ -31,8 +31,10 @@ flow = pd.read_excel("data/hp5.xlsx",sheet_name='Flow')
 
 lastmonth = datetime.now() - dateutil.relativedelta.relativedelta(months=1)
 lastmonth = int(lastmonth.strftime("%Y%m"))
+lastmonth = 202308
 currentmonth = datetime.now() 
 currentmonth = int(currentmonth.strftime("%Y%m"))
+currentmonth = 202307
 
 currentkey = [1,2,3,4,5,6]
 lastkey = [7,8,9,10,11,12]
